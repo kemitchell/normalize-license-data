@@ -1,7 +1,11 @@
 var clone = require('lodash.clone')
 var is = require('is_js')
 var schemeless = require('schemeless')
-var nameToUrl = require('oss-license-name-to-url')
+var spdx = require('spdx')
+
+function nameToUrl (name) {
+  return 'http://spdx.org/licenses/' + name
+}
 
 module.exports = function normalizeLicense (license) {
   if (is.falsy(license)) return null
@@ -20,7 +24,9 @@ module.exports = function normalizeLicense (license) {
       delete license.type
     }
     // Honor URL if present, otherwise guess
-    license.url = license.url || nameToUrl(license.name)
+    if (!license.url && spdx.valid(license.name)) {
+      license.url = nameToUrl(license.name)
+    }
     return license
   }
 
@@ -29,7 +35,9 @@ module.exports = function normalizeLicense (license) {
   }
 
   if (is.string(license)) {
-    license = {name: license, url: nameToUrl(license)}
+    license = spdx.valid(license) ?
+      {name: license, url: nameToUrl(license)} :
+      {name: license}
     if (!license.url) delete license.url
     return license
   }

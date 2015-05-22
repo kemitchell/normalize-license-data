@@ -16,10 +16,10 @@ describe('normalize-license-data', function () {
     expect(normalize('')).to.equal(null)
   })
 
-  it('creates opensource.org-based license.url for valid string license names', function () {
+  it('creates spdx.org-based license.url for valid string license names', function () {
     var license = normalize('MIT')
     expect(license.name).to.equal('MIT')
-    expect(license.url).to.equal('http://opensource.org/licenses/MIT')
+    expect(license.url).to.equal('http://spdx.org/licenses/MIT')
   })
 
   it('does not create license.url for unrecognized license names', function () {

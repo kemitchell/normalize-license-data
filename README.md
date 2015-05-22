@@ -51,9 +51,10 @@ npm test
 ## Dependencies
 
 - [is_js](https://github.com/arasatasaygin/is.js): micro check library
-- [lodash.clone](https://github.com/lodash/lodash): The modern build of lodash’s `_.clone` as a module.
+- [lodash.clone](https://github.com/git+https:/): The modern build of lodash’s `_.clone` as a module.
 - [oss-license-name-to-url](https://github.com/npm/oss-license-name-to-url): Convert shorthand OSS license names to opensource.org URLs
 - [schemeless](https://github.com/zeke/schemeless): Remove the parts of URLs that humans don&#39;t really need to see
+- [spdx](https://github.com/git+https:/): SPDX License Expression Syntax parser
 
 ## Dev Dependencies
 
